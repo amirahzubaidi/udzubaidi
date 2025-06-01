@@ -7,7 +7,7 @@ class Home extends MY_Controller
     public function index()
     {
         $data['title']  = 'Homepage';
-        $data['page']   = 'pages/home/index';
+        $data['page']   = 'page/home/index';
         
         $this->view($data);   
     }
