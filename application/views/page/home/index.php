@@ -7,9 +7,9 @@
                 <div class="col-md-12">
                     <div class="card mb-3">
                         <div class="card-body">
-                            Kategori: <strong>Semua Kategori</strong>
+                            Kategori: <strong><?= isset($category) ? $category : 'Semua Kategori'  ?></strong>
                             <span class="float-right">
-                                Urutkan Harga: <a href="#" class="badge badge-primary">Termurah</a> | <a href="#" class="badge badge-primary">Termahal</a>
+                                Urutkan Harga: <a href="<?= base_url("index.php/shop/sortby/asc")  ?>" class="badge badge-primary">Termurah</a> | <a href="<?= base_url("index.php/shop/sortby/desc")  ?>" class="badge badge-primary">Termahal</a>
                             </span>
                         </div>
                     </div>
@@ -17,20 +17,21 @@
             </div>
 
             <div class="row">
-                <!-- Kategori 1 -->
+                <?php foreach($content as $row) : ?>
                 <div class="col-md-6">
                     <div class="card mb-3">
-                        <img src="https://placehold.co/100x70" alt="" class="card-img-top">
+                        <img src="<?= $row->image ? base_url("/images/product/$row->image") : base_url("/images/product/default.jpg") ?>" alt="" height="300" class="card-img-top">
                         <div class="card-body">
-                            <h5 class="card-title">Product Title</h5>
-                            <p class="card-text"><strong>Rp100.000,-</strong></p>
-                            <p class="card-text">Some quick example text lorem ipsum ceunah.</p>
-                            <a href="#" class="badge badge-primary"><i class="fas fa-tags"></i> Category</a>
+                            <h5 class="card-title"><?= $row->product_title ?></h5>
+                            <p class="card-text"><strong>Rp<?= number_format($row->price, 0, ',', '.') ?>,-</strong></p>
+                            <p class="card-text"><?= $row->description ?></p>
+                            <!-- <a href="<?= base_url("/index.php/shop/category/$row->category_slug") ?>" class="badge badge-primary"><i class="fas fa-tags"></i> <?= $row->category_title ?></a> -->
                         </div>
                         <div class="card-footer">
-                            <form action="">
+                            <form action="<?= base_url("index.php/cart/add")  ?>" method="POST">
+                                <input type="hidden" name="id_product" value="<?= $row->id ?>">
                                 <div class="input-group">
-                                    <input type="number" class="form-control">
+                                    <input type="number" name="qty" value="1" class="form-control">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary">Add to Cart</button>
                                     </div>
@@ -39,138 +40,12 @@
                         </div>
                     </div>
                 </div>
-                <!-- Batas Kategori 1 -->
-
-                <!-- Kategori 2 -->
-                <div class="col-md-6">
-                    <div class="card mb-3">
-                        <img src="https://placehold.co/100x70" alt="" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Product Title</h5>
-                            <p class="card-text"><strong>Rp100.000,-</strong></p>
-                            <p class="card-text">Some quick example text lorem ipsum ceunah.</p>
-                            <a href="#" class="badge badge-primary"><i class="fas fa-tags"></i> Category</a>
-                        </div>
-                        <div class="card-footer">
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="number" class="form-control">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary">Add to Cart</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- Batas Kategori 2 -->
-
-                <!-- Kategori 3 -->
-                <div class="col-md-6">
-                    <div class="card mb-3">
-                        <img src="https://placehold.co/100x70" alt="" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Product Title</h5>
-                            <p class="card-text"><strong>Rp100.000,-</strong></p>
-                            <p class="card-text">Some quick example text lorem ipsum ceunah.</p>
-                            <a href="#" class="badge badge-primary"><i class="fas fa-tags"></i> Category</a>
-                        </div>
-                        <div class="card-footer">
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="number" class="form-control">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary">Add to Cart</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- Batas Kategori 3 -->
-
-                <!-- Kategori 4 -->
-                <div class="col-md-6">
-                    <div class="card mb-3">
-                        <img src="https://placehold.co/100x70" alt="" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Product Title</h5>
-                            <p class="card-text"><strong>Rp100.000,-</strong></p>
-                            <p class="card-text">Some quick example text lorem ipsum ceunah.</p>
-                            <a href="#" class="badge badge-primary"><i class="fas fa-tags"></i> Category</a>
-                        </div>
-                        <div class="card-footer">
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="number" class="form-control">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary">Add to Cart</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- Batas Kategori 4 -->
-
-                <!-- Kategori 5 -->
-                <div class="col-md-6">
-                    <div class="card mb-3">
-                        <img src="https://placehold.co/100x70" alt="" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Product Title</h5>
-                            <p class="card-text"><strong>Rp100.000,-</strong></p>
-                            <p class="card-text">Some quick example text lorem ipsum ceunah.</p>
-                            <a href="#" class="badge badge-primary"><i class="fas fa-tags"></i> Category</a>
-                        </div>
-                        <div class="card-footer">
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="number" class="form-control">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary">Add to Cart</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- Batas Kategori 5 -->
-
-                <!-- Kategori 6 -->
-                <div class="col-md-6">
-                    <div class="card mb-3">
-                        <img src="https://placehold.co/100x70" alt="" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Product Title</h5>
-                            <p class="card-text"><strong>Rp100.000,-</strong></p>
-                            <p class="card-text">Some quick example text lorem ipsum ceunah.</p>
-                            <a href="#" class="badge badge-primary"><i class="fas fa-tags"></i> Category</a>
-                        </div>
-                        <div class="card-footer">
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="number" class="form-control">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary">Add to Cart</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- Batas Kategori 6 -->
+                <?php endforeach  ?>
             </div>
 
             <!-- Pagination -->
             <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
+                <?= $pagination ?>
             </nav>
             <!-- Pagination -->
         </div>
@@ -184,11 +59,13 @@
                             Pencarian
                         </div>
                         <div class="card-body">
-                            <form action="">
+                            <form action="<?= base_url("index.php/shop/search") ?>" method="POST">
                                 <div class="input-group">
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="keyword" placeholder="Cari" value="<?= $this->session->userdata('keyword') ?>" class="form-control">
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary">Cari</button>
+                                         <button class="btn btn-primary" type="submit">
+                                            <i class="fas fa-search"></i>
+                                         </button>
                                     </div>
                                 </div>
                             </form>
@@ -203,9 +80,10 @@
                             Kategori
                         </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Semua Kategori</li>
-                                <li class="list-group-item">Kategori 1</li>
-                                <li class="list-group-item">Kategori 2</li>
+                                <li class="list-group-item"><a href="<?= base_url('') ?>">Semua Kategori</a></li>
+                                <?php foreach($categories as $category) : ?>
+                                <li class="list-group-item"><a href="<?= base_url("/index.php/shop/category/$category->slug") ?>"><?= $category->title  ?></a></li>
+                                <?php endforeach  ?>
                             </ul>
                     </div>
                 </div>

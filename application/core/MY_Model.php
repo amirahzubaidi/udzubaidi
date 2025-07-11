@@ -110,24 +110,28 @@ class MY_Model extends CI_Model
         return $this->db->affected_rows();
     }
 
-    public function paginate($page)
+    public function paginate($page, $perPage = null)
     {
-        $this->db->limit(
-            $this->perPage,
-            $this->calculateRealOffset($page)
-        );
+    if ($perPage) {
+        $this->perPage = $perPage;
+    }
+
+    $this->db->limit(
+        $this->perPage,
+        $this->calculateRealOffset($page)
+    );
+
+    return $this; // supaya bisa chaining ->get()
     }
 
     public function calculateRealOffset($page)
     {
-        if (is_null($page) || empty($page)) {
-            $offset = 0;
-        } else {
-            $offset = ($page * $this->perPage) - $this->perPage;
-        }
+    $page = (int)$page;
+    if ($page < 1) $page = 1;
 
-        return $offset;
+    return ($page * $this->perPage) - $this->perPage;
     }
+
 
     public function makePagination($baseUrl, $uriSegment, $totalRows = null)
     {
@@ -162,7 +166,7 @@ class MY_Model extends CI_Model
         ]; 
 
         $this->pagination->initialize($config);
-        return $this->pagination->create_link();
+        return $this->pagination->create_links();
     }
 
 }

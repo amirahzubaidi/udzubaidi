@@ -89,7 +89,15 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url', 'form');
+// $autoload['helper'] = array('url', 'form');
+   $autoload['helper'] = array('url', 'form', 'dropdown');
+   $autoload['helper'] = array('url', 'form', 'encryption'); // tambahkan 'encryption'
+   $autoload['helper'] = array('url', 'cart');
+   $autoload['helper'] = array('url', 'form', 'cart');
+
+
+
+
 
 /*
 | -------------------------------------------------------------------
@@ -133,3 +141,5 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array();
+
+

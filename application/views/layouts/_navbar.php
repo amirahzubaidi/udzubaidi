@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
       <div class="container">
-        <a class="navbar-brand" href="#">UD. Zubaidi</a>
+        <a class="navbar-brand" href="<?= base_url('index.php') ?>">UD. Zubaidi</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -8,36 +8,36 @@
           
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="<?= base_url('index.php') ?>">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" id="dropdown-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage</a>
           <div class="dropdown-menu" aria-labelledby="dropdown-1">
-            <a href="/admin-category.html" class="dropdown-item">Kategori</a>
-            <a href="/admin-product.html" class="dropdown-item">Produk</a>
-            <a href="/admin-order.html" class="dropdown-item">Order</a>
-            <a href="/admin-users.html" class="dropdown-item">Pengguna</a>
+            <a href="<?= base_url('index.php/category') ?>" class="dropdown-item">Kategori</a>
+            <a href="<?= base_url('index.php/product') ?>" class="dropdown-item">Produk</a>
+            <a href="<?= base_url('index.php/order') ?>" class="dropdown-item">Order</a>
+            <a href="<?= base_url('index.php/user') ?>" class="dropdown-item">Pengguna</a>
           </div>
         </li>
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a href="/cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart (0)</a>
+          <a href="<?= base_url('index.php/cart') ?>" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart (<?= getCart(); ?>)</a>
         </li>
         <?php if(! $this->session->userdata('is_login')) : ?>
         <li class="nav-item">
-          <a href="<?= base_url('/login') ?>" class="nav-link">Login</a>
+          <a href="<?= base_url('index.php/login') ?>" class="nav-link">Login</a>
         </li>
         <li class="nav-item">
-          <a href="<?= base_url('/register') ?>" class="nav-link">Register</a>
+          <a href="<?= base_url('index.php/register') ?>" class="nav-link">Register</a>
         </li>
         <?php else :  ?>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $this->session->userdata('name') ?></a>
           <div class="dropdown-menu" aria-labelledby="dropdown-2">
-            <a href="/profile.html" class="dropdown-item">Profile</a>
-            <a href="/orders.html" class="dropdown-item">Orders</a>
-            <a href="<?= base_url('/logout') ?>" class="dropdown-item">Logout</a>
+            <a href="<?= base_url('index.php/profile') ?>" class="dropdown-item">Profile</a>
+            <a href="<?= base_url("index.php/myorder") ?>" class="dropdown-item">Orders</a>
+            <a href="<?= base_url('index.php/logout') ?>" class="dropdown-item">Logout</a>
           </div>
         </li>
         <?php endif ?>
@@ -45,4 +45,13 @@
       </ul>
     </div>
   </div>
+
+  <!-- jQuery (wajib sebelum Bootstrap JS) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </nav>
