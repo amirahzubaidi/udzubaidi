@@ -64,46 +64,6 @@ class Order extends MY_Controller
     }
 
 
-    // public function detail($id) 
-    // {
-    //     $data['order']      = $this->order->where('id', $id)->first();
-    //     if (!$data['order']) {
-    //         $this->session->set_flashdata('warning', 'Data tidak ditemukan.');
-    //         redirect(base_url('index.php/order'));
-    //     }
-
-    //     //yg 1
-    //     // $this->order->table   = 'orders_detail';
-    //     // $data['order_detail']   = $this->order->select([
-    //     //     'orders_detail.id_orders', 'orders_detail.id_product', 'orders_detail.qty', 
-    //     //     'orders_detail.subtotal', 'product.title', 'product.image', 'product.price'
-    //     // ])
-    //     // ->join('product')
-    //     // ->where('orders_detail.id_orders', $id)
-    //     // ->get();
-
-    //     $this->db->select([
-    //         'orders_detail.id_orders', 'orders_detail.id_product', 'orders_detail.qty', 
-    //         'orders_detail.subtotal', 'product.title', 'product.image', 'product.price'
-    //     ]);
-    //         $this->db->from('orders_detail');
-    //         $this->db->join('product', 'orders_detail.id_product = product.id', 'left');
-    //         $this->db->where('orders_detail.id_orders', $id);
-
-    //     $data['order_detail'] = $this->db->get()->result();
-
-
-    //     if ($data['order']->status !== 'waiting') {
-    //         $this->order->table = 'orders_confirm';
-    //         $data['order_confirm']  = $this->order->where('id_orders', $id)->first();
-    //     }
-
-    // $data['page']               = 'page/order/detail';
-
-    // $this->view($data);
-
-    // }
-
     public function detail($id) 
     {
     $data['order'] = $this->order->where('id', $id)->first();
@@ -154,6 +114,27 @@ class Order extends MY_Controller
 
         redirect(base_url("index.php/order/detail/$id"));
     }
+
+   public function delete($id)
+{
+    if (!$_POST) {
+        redirect(base_url('index.php/order'));
+    }
+
+    if (!$this->order->where('id', $id)->first()) {
+        $this->session->set_flashdata('warning', 'Data tidak ditemukan!');
+        redirect(base_url('index.php/order'));
+    }
+
+    if ($this->order->delete('id', $id)) {
+        $this->session->set_flashdata('success', 'Data berhasil dihapus.');
+    } else {
+        $this->session->set_flashdata('error', 'Terjadi kesalahan saat menghapus data.');
+    }
+
+    redirect(base_url('index.php/order'));
+}
+
 
 }
 

@@ -65,5 +65,10 @@ $route['product/create'] = 'product/create';
 $route['order/(:num)']   = 'order/index/$1';
 $route['home/(:num)']   = 'home/index/$1';
 
+$route['category/search'] = 'category/search';
+$route['category/search/(:num)'] = 'category/search/$1';
+
+$route['order/delete/(:num)'] = 'order/delete/$1';
+
 
 

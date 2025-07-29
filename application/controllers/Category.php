@@ -22,7 +22,7 @@ public function index($page = null)
                                 
     $data['total_rows']  = $this->category->count();
     $data['pagination'] = $this->category->makePagination(
-                                base_url('index.php/category'), 2, $data['total_rows']
+                                base_url('index.php/category'), 3, $data['total_rows']
                           );
     $data['page']       = 'page/category/index.php';
 
@@ -62,7 +62,6 @@ public function index($page = null)
     $this->session->unset_userdata('keyword');
     redirect(base_url('index.php/category'));
     }
-
 
     public function create()
     {

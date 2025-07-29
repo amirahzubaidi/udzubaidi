@@ -104,11 +104,17 @@ class MY_Model extends CI_Model
         return $this->db->update($this->table, $data);
     }
 
-    public function delete()
+    // public function delete()
+    // {
+    //     $this->db->delete($this->table);
+    //     return $this->db->affected_rows();
+    // }
+
+    public function delete($column, $value)
     {
-        $this->db->delete($this->table);
-        return $this->db->affected_rows();
+    return $this->db->delete($this->table, [$column => $value]);
     }
+
 
     public function paginate($page, $perPage = null)
     {
@@ -142,7 +148,8 @@ class MY_Model extends CI_Model
             'uri_segment'       => $uriSegment,
             'per_page'          => $this->perPage, 
             'total_rows'        => $totalRows, 
-            'use_page_number'   => true,
+            'use_page_numbers'   => true,
+            'reuse_query_string' => true,
             
             'full_tag_open'     => '<ul class="pagination">',
             'full_tag_close'    => '</ul>',

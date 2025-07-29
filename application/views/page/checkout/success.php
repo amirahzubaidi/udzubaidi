@@ -11,7 +11,7 @@
                 <p>Terima kasih, sudah berbelanja.</p>
                 <p>Silahkan lakukan pembayaran untuk bisa kami proses selanjutnya dengan cara:</p>
                 <ol>
-                    <li>Lakukan pembayaran pada rekening <strong>BNI 675954690</strong> a/n Abu Bakar Zubaidi</li>
+                    <li>Lakukan pembayaran pada rekening <strong>BNI 0052123715</strong> a/n Abu Bakar Zein Zubaidi</li>
                     <li>Sertakan keterangan dengan nomor order: <strong><?= $content->invoice ?></strong></li>
                     <li>Total pembayaran: <strong>Rp<?= number_format($content->total, 0, ',', '.') ?>,-</strong></li>
                 </ol>

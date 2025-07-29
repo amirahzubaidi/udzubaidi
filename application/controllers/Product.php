@@ -34,7 +34,7 @@ class Product extends MY_Controller
 
         $data['total_rows'] = $this->product->count();
         $data['pagination'] = $this->product->makePagination(
-            base_url('index.php/product'), 2, $data['total_rows']
+            base_url('index.php/product'), 2, $data['total_rows'] 
         );
         $data['page']       = 'page/product/index';
 
