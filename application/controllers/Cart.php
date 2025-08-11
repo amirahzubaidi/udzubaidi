@@ -127,7 +127,7 @@ class Cart extends MY_Controller {
             redirect(base_url('cart/index'));
         }
 
-        if($this->cart->where('id', $id)->delete()) {
+        if($this->cart->delete('id', $id)) {
             $this->session->set_flashdata('success', 'Data sudah berhasil dihapus!');
         } else {
              $this->session->set_flashdata('error', 'Oops! Terjadi suatu kesalahan');
