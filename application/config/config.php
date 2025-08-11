@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 // $config['base_url'] = 'http://localhost/udzubaidi/';
 
-$config['base_url'] = 'https://udzubaidi.my.id/udzubaidi-main/';
+$config['base_url'] = 'https://udzubaidi.my.id/';
 
 /*
 |--------------------------------------------------------------------------
